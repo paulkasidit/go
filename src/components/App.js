@@ -1,12 +1,14 @@
 import React from "react";
 import HeaderControl from "./HeaderControl";
-import TripInfoControl from "./TripInfoControl";
 import MainControl from "./MainControl";
+import TripInfoControl from "./TripInfoControl";
 
-function App() {
+function App(){
   return(
     <React.Fragment>
-
+      <HeaderControl/>
+      <MainControl/>
+      <TripInfoControl/>
     </React.Fragment>
   )
 }
