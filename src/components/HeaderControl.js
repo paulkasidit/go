@@ -9,6 +9,9 @@ class HeaderControl extends React.Component {
   render(){
     return(
       <React.Fragment>
+        <Navbar/>
+        <SearchBar/>
+        <AccountInfo/>
       </React.Fragment>
     )
   }
