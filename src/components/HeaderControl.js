@@ -9,9 +9,17 @@ class HeaderControl extends React.Component {
   render(){
     return(
       <React.Fragment>
-        <Navbar/>
-        <SearchBar/>
-        <AccountInfo/>
+        <div class = "columns is-wide">
+          <div class = "column">
+            <Navbar/>
+          </div>
+          <div class = "column">
+            <SearchBar/>
+          </div>
+          <div class = "column">
+            <AccountInfo/>
+          </div>
+        </div>
       </React.Fragment>
     )
   }

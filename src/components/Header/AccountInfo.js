@@ -4,12 +4,20 @@ import "./Header.css";
 function AccountInfo() { 
   return (
     <React.Fragment>
-      <ul>
-        <li>Hello, Paul!</li>
-        <li>Account</li>
-        <li>Your Trips</li>
-        <li>Logout</li>
-      </ul>
+      <div class = "columns is-gapless">
+        <div class = "column">
+          <p>Hello, Paul!</p>
+        </div>
+        <div class = "column">
+          <p>Account</p>
+        </div>
+        <div class = "column">
+          <p>Your Trips</p>
+        </div>
+        <div class = "column">
+          <p>Logout</p>
+        </div>
+    </div>
     </React.Fragment>
   )
 }

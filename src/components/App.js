@@ -7,7 +7,7 @@ import 'bulma/css/bulma.min.css';
 function App(){
   return(
     <React.Fragment>
-      <section class = "hero is-info">
+      <section class = "hero is-info is-large">
         <HeaderControl/>
       </section>
       <div class = "webContainer">
