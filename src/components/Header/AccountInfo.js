@@ -4,18 +4,27 @@ import "./Header.css";
 function AccountInfo() { 
   return (
     <React.Fragment>
+      <nav class = "breadcrumb is-right">
+        
+      </nav>
       <div class = "columns is-gapless">
         <div class = "column">
-          <p>Hello, Paul!</p>
+            <h5 class = "title is-5">Hello, Paul!</h5>
         </div>
         <div class = "column">
-          <p>Account</p>
+          <button class = "button is-outlined">
+            <a href = "#">Account</a>
+          </button>
         </div>
         <div class = "column">
-          <p>Your Trips</p>
+          <button class = "button is-outlined">
+            <a href = "#">Your Trips</a>
+          </button>
         </div>
         <div class = "column">
-          <p>Logout</p>
+          <button class = "button is-outlined">
+            <a href = "#">Logout</a>
+          </button>
         </div>
     </div>
     </React.Fragment>

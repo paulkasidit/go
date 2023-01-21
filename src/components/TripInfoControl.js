@@ -1,5 +1,6 @@
 import React from 'react';
 import "./App.css";
+import "./TripInfo/TripInfo.css"; 
 import TripInfo from './TripInfo/TripInfo';
 import InputForm from './TripInfo/InputForm';
 
