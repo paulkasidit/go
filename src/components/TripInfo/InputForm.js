@@ -3,7 +3,17 @@ import React from "react";
 function InputForm() { 
   return (
     <React.Fragment>
-      <p>Hello World</p>
+      <form>
+        <input type = "text"
+          name = "check-in-date"
+          placeholder="From"
+        />
+        <input type = "text"
+          name = "check-out-date"
+          placeholder="Until"
+        />
+        <button type = "submit">Go!</button>
+      </form>
     </React.Fragment>
   )
 }

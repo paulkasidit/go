@@ -1,9 +1,10 @@
 import React from "react";
+import googleMapsImage from "../../img/googlemaps.png"
 
 function GoogleMapsAPI() { 
   return (
     <React.Fragment>
-      <p>Hello World</p>
+      <img src={googleMapsImage} alt="Google Maps example" />
     </React.Fragment>
   )
 }

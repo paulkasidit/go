@@ -7,10 +7,12 @@ class TripInfoControl extends React.Component {
   render(){
     return(
       <React.Fragment>
+        <InputForm/>
+        <TripInfo/>
       </React.Fragment>
     )
   }
-
+  
 };
 
 export default TripInfoControl;

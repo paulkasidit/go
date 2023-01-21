@@ -7,6 +7,7 @@ class MainControl extends React.Component {
   render(){
     return(
       <React.Fragment>
+        <GoogleMapsAPI/>
       </React.Fragment>
     )
   }

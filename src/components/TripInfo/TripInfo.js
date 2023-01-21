@@ -3,7 +3,7 @@ import React from "react";
 function TripInfo() { 
   return (
     <React.Fragment>
-      <p>Hello World</p>
+      <p>Details of your trip</p>
     </React.Fragment>
   )
 }
