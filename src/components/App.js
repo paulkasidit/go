@@ -16,11 +16,11 @@ function App(){
             </section>
       <div class = "contentContainer">
         <section class = "section">
-              <div class = "columns">
-                <div class = "column">
+              <div class = "columns is-centered">
+                <div class = "column is-half">
                     <MainControl/>
                   </div>
-                <div class = "column">
+                <div class = "column is-one-quarter">
                   <TripInfoControl/>
                 </div>
               </div>
