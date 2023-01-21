@@ -1,4 +1,5 @@
 import React from "react";
+import "./TripInfo.css";  
 
 function TripInfo() { 
   return (

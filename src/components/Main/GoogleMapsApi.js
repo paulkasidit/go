@@ -1,5 +1,6 @@
 import React from "react";
 import googleMapsImage from "../../img/googlemaps.png"
+import "./Main.css";  
 
 function GoogleMapsAPI() { 
   return (
