@@ -1,4 +1,5 @@
 import React from 'react';
+import "./App.css";
 import Navbar from './Header/NavBar'; 
 import SearchBar from './Header/SearchBar';
 import AccountDetail from './Header/AccountDetail';

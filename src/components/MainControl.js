@@ -1,4 +1,5 @@
 import React from 'react';
+import "./App.css";
 import AirBnbAPI from './Main/AirbnbAPI';
 import GoogleMapsAPI from './Main/GoogleMapsAPI';
 
