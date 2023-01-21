@@ -4,18 +4,17 @@ import "./Header.css"
 function SearchBar() { 
   return (
     <React.Fragment>
-      <div class = "columns">
-        <div class = "column">
-          <div class = "searchBar">
-            <input type  = "text" placeholder = "Search past trips"></input>
-          </div>
-        </div>
-        <div class = "column">
-          <button class = "button is-info is-outlined is rounded has-background-white">
-            Go
+      <form id = "form">
+        <div class = "searchBar">
+          <input type = "search" 
+          id = "query" 
+          name = "q"
+          placeholder="Search your past trips"/>
+          <button class = "button is-white">
+            Search
           </button>
         </div>
-      </div>
+      </form>
     </React.Fragment>
   )
 }

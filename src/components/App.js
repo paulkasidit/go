@@ -9,14 +9,14 @@ function App(){
   return(
     <React.Fragment>
       <div class = "webContainer">
-            <section class = "hero is-info is-primary">
-                  <div class = "hero-body">
-                    <HeaderControl/>
-                </div>
-            </section>
+          <section class = "hero is-info is-primary">
+                    <div class = "hero-body">
+                      <HeaderControl/>
+                  </div>
+          </section>
       <div class = "contentContainer">
         <section class = "section">
-              <div class = "columns is-centered">
+              <div class = "columns">
                 <div class = "column is-half">
                     <MainControl/>
                   </div>

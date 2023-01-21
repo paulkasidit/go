@@ -1,0 +1,17 @@
+.searchBar { 
+  height: 100%;
+  width: 100%;
+  text-shadow: none;
+  box-shadow: none;
+  border: none;
+}
+
+.searchBar input{
+  height: 50%;
+  width: 50%;
+  border-radius: 25px;
+  border-color: rgb(229, 216, 216);
+  text-shadow: none;
+  box-shadow: none;
+  text: gray;
+}
