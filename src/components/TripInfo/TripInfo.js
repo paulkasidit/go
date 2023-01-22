@@ -1,16 +1,19 @@
 import React from "react";
 import "./TripInfo.css";  
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { solid, regular, brands, icon } from '@fortawesome/fontawesome-svg-core/import.macro'
 
 function TripInfo() { 
   return (
     <React.Fragment>
       <div class = "tripInfoContainer">
-        <div class = "box has-background-warning-light">
 
+        <div class = "box has-background-warning-light">
           <div class="card has-background-link-light">
             <header class="card-header has-background-white">
               <p class="card-header-title">
-              <h4 class="title is-4">Details of your trip</h4>
+              <FontAwesomeIcon icon={solid('user-secret')} />
+              <h4 class="title is-4">Your Paso Robles Itinerary</h4>
               </p>
               <button class="card-header-icon" aria-label="more options">
               </button>

@@ -4,11 +4,11 @@ import MainControl from "./MainControl";
 import TripInfoControl from "./TripInfoControl";
 import 'bulma/css/bulma.min.css';
 import './App.css';
+import { library } from '@fortawesome/fontawesome-svg-core'
 
 function App(){
   return(
     <React.Fragment>
-      <script src="https://kit.fontawesome.com/081ca3b710.js" crossorigin="anonymous"></script>
       <div class = "webContainer">
           <section class = "hero is-info is-primary">
                     <div class = "hero-body">
