@@ -8,6 +8,7 @@ import './App.css';
 function App(){
   return(
     <React.Fragment>
+      <script src="https://kit.fontawesome.com/081ca3b710.js" crossorigin="anonymous"></script>
       <div class = "webContainer">
           <section class = "hero is-info is-primary">
                     <div class = "hero-body">

@@ -6,11 +6,13 @@ function SearchBar() {
     <React.Fragment>
       <form id = "form">
         <div class = "searchBar">
-          <input type = "search" 
+          <input 
+          class = "input is-info is-focused"
+          type = "text" 
           id = "query" 
           name = "q"
-          placeholder="Search your past trips"/>
-          <button class = "button is-white">
+          placeholder="Search your past trips..."/>
+          <button class = "button is-info is-outlined is-rounded has-background-info-light">
             Search
           </button>
         </div>

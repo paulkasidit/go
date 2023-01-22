@@ -4,7 +4,9 @@ import "./TripInfo.css";
 function InputForm() { 
   return (
     <React.Fragment>
+
       <form>
+
         <input type = "text"
           name = "check-in-date"
           placeholder="From"
