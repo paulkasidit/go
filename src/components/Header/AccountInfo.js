@@ -1,5 +1,6 @@
 import React from "react";
 import "./Header.css"; 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 function AccountInfo() { 
   return (
@@ -13,7 +14,12 @@ function AccountInfo() {
         </div>
         <div class = "column">
           <button class = "button is-outlined">
-            <a href = "#">Account</a>
+            <a href = "#">
+              <span class = "icon-text">
+                <span>Account</span>
+                
+              </span>
+            </a>
           </button>
         </div>
         <div class = "column">

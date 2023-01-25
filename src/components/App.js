@@ -4,7 +4,10 @@ import MainControl from "./MainControl";
 import TripInfoControl from "./TripInfoControl";
 import 'bulma/css/bulma.min.css';
 import './App.css';
-import { library } from '@fortawesome/fontawesome-svg-core'
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+
+library.add(faArrowRight); 
 
 function App(){
   return(

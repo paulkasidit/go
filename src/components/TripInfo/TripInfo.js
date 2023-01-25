@@ -1,7 +1,6 @@
 import React from "react";
 import "./TripInfo.css";  
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { solid, regular, brands, icon } from '@fortawesome/fontawesome-svg-core/import.macro'
 
 function TripInfo() { 
   return (
@@ -12,8 +11,14 @@ function TripInfo() {
           <div class="card has-background-link-light">
             <header class="card-header has-background-white">
               <p class="card-header-title">
-              <FontAwesomeIcon icon={solid('user-secret')} />
-              <h4 class="title is-4">Your Paso Robles Itinerary</h4>
+              <h4 class="title is-4">
+                <span class = "icon-text">
+                  <span>Your Paso Robles Itinerary </span>
+                  <span class = "icon">
+                    <FontAwesomeIcon icon="fa-solid fa-arrow-right" />
+                  </span>
+                </span>
+              </h4> 
               </p>
               <button class="card-header-icon" aria-label="more options">
               </button>
