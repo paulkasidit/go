@@ -11,7 +11,7 @@ function SearchBar() {
           type = "text" 
           id = "query" 
           name = "q"
-          placeholder="Search your past trips..."/>
+          placeholder="Search your past trips"/>
           <button class = "button is-info is-outlined is-rounded has-background-info-light">
             Search
           </button>
