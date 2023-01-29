@@ -1,7 +1,5 @@
 #### GO
 
-This web application will allow users to plan short trips from their current location, from day trips to one night get-aways, to a destination within a 150 mile radius of their current location.
-
 ## By
 
 * Kasidit Srisawat (Paul)
@@ -21,8 +19,7 @@ This web application will allow users to plan short trips from their current loc
 ![Alt text](https://github.com/paulkasidit/go/blob/main/project-workflow.png)
 
 ## Description
-
-This website was built for clients to manage their inventory. 
+This web application will allow users to plan short trips from their current location, from day trips to one night get-aways, to a destination within a 150 mile radius of their current location.
 
 - You can the webpage directly by clicking [here]()
 
