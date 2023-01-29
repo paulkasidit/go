@@ -28,7 +28,7 @@ This web application will allow users to plan short trips from their current loc
 
 1. Clone the repo to your desired local directory with the below terminal command (you must already have git installed). Open a terminal in your preferred directory and run this command. 
 ```
-git clone https://github.com/paulkasidit/inventory_tracker
+git clone https://github.com/paulkasidit/go
 
 ## Local Setup
 ``` 
