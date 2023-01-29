@@ -15,10 +15,10 @@ This web application will allow users to plan short trips from their current loc
 * NPM
 
 ## Component Diagram 
-![Alt text]()
+![Alt text](https://github.com/paulkasidit/go/blob/main/component-diagram.png)
 
 ## Project Workflow
-![Alt text]()
+![Alt text](https://github.com/paulkasidit/go/blob/main/project-workflow.png)
 
 ## Description
 
