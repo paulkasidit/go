@@ -17,6 +17,9 @@ This web application will allow users to plan short trips from their current loc
 ## Component Diagram 
 ![Alt text]()
 
+## Project Workflow
+![Alt text]()
+
 ## Description
 
 This website was built for clients to manage their inventory. 
