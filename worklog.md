@@ -7,6 +7,35 @@
 ## 1. User Questionnaire 
 ### If user does not have an account, questionnaire redirects to a sign up form! 
 
+## Registration Form
+
+#### Example of form 
+
+``` 
+  <form id = "registrationForm">
+    <input name = "username">Username</input>
+    <input name = "password">Password</input>
+  </form>
+  
+``` 
+
+#### Should create new user entry into database on form submission 
+* e.g 
+``` 
+{
+  uuid: 1123556,
+  username: "PAUL",
+  password: 23123123123 (hashed),
+  userProfile: { 
+    interests: [], 
+    budget: "", 
+    accomodationPreference: ""
+  },
+  pastTrips:[]
+}
+
+``` 
+
 #### Get Questionnaire to send form feedback into the database in the form of JSON, questionnaire will build a profile of the user. 
 
 * e.g Questionnaire for username "PAUL", [x] is the selected value
@@ -44,13 +73,17 @@
 
 ``` 
 
+
+## Sign In Form 
+
+
 ## 2. Google MAPS API
 ####  Get Google MAPS API to render current location.
   * Render Google MAPS inside of given component. 
 ####  Get Google MAPS API to map desinations more than 50 miles from me and less than 150 miles away. 
   * Figure out way to feed queries into google maps API based on given userProfile data. 
 ####  Get Google MAPS API to send back JSON data of selected city. 
-  e.g 
+  * e.g 
   ``` 
     selectedCity: "Monterey"
   ``` 
