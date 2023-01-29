@@ -4,7 +4,7 @@ import "./Main.css";
 function AirbnbAPI() { 
   return (
     <React.Fragment>
-      <p>Hello World mm</p>
+      <p>Hello World</p>
     </React.Fragment>
   )
 }
