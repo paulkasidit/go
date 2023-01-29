@@ -1,13 +1,13 @@
-#### Worklog 
+# Worklog 
 
-#### Project ROAD MAP
+# Project ROAD MAP
 
 * Components are listed chronologically in the order that they will be executed. 
 
-1. User Questionnaire 
-## If user does not have an account, questionnaire redirects to a sign up form! 
+## 1. User Questionnaire 
+### If user does not have an account, questionnaire redirects to a sign up form! 
 
-# Get Questionnaire to send form feedback into the database in the form of JSON, questionnaire will build a profile of the user. 
+#### Get Questionnaire to send form feedback into the database in the form of JSON, questionnaire will build a profile of the user. 
 
 * e.g Questionnaire for username "PAUL", [x] is the selected value
 
@@ -44,12 +44,12 @@
 
 ``` 
 
-2. Google MAPS API
-# Get Google MAPS API to render current location.
+## 2. Google MAPS API
+####  Get Google MAPS API to render current location.
   * Render Google MAPS inside of given component. 
-# Get Google MAPS API to map desinations more than 50 miles from me and less than 150 miles away. 
+####  Get Google MAPS API to map desinations more than 50 miles from me and less than 150 miles away. 
   * Figure out way to feed queries into google maps API based on given userProfile data. 
-# Get Google MAPS API to send back JSON data of selected city. 
+####  Get Google MAPS API to send back JSON data of selected city. 
   e.g 
   ``` 
     selectedCity: "Monterey"
@@ -93,8 +93,8 @@
   }
   ``` 
 
-3. AirBnb API 
-# JSON fields of the built userProfile "budget" & "accomodationPreferences" is fed into the AIRBNB API in order to determine appropriate accomodations"  
+## 3. AirBnb API 
+#### JSON fields of the built userProfile "budget" & "accomodationPreferences" is fed into the AIRBNB API in order to determine appropriate accomodations"  
 
-# AirBnb API displays atleast three accomodations mathcing the user preferences inside the given Airbnb component. 
+####  AirBnb API displays atleast three accomodations mathcing the user preferences inside the given Airbnb component. 
 
