@@ -38,7 +38,8 @@
 
 #### Get Questionnaire to send form feedback into the database in the form of JSON, questionnaire will build a profile of the user. 
 
-* e.g Questionnaire for username "PAUL", [x] is the selected value
+* e.g Example questionnaire for username "PAUL"
+( [x] is the selected value)
 
 ``` 
   1.What are your interests? (select at least one)
@@ -55,7 +56,6 @@
     * $$ (form value: "middle")
     * $$$ (form value: "high") [x]
   
-
 ``` 
 
 * The result should be, 
@@ -69,13 +69,21 @@
       budget: "high", 
       accomodationPreference: ["bachelor","family"]
     }
-    pastTrip: (Object array of past trips).
+    pastTrips: []
 
 ``` 
 
-
 ## Sign In Form 
 
+#### Example of form 
+
+``` 
+  <form id = "registrationForm">
+    <input name = "username">Username</input>
+    <input name = "password">Password</input>
+  </form>
+  
+``` 
 
 ## 2. Google MAPS API
 ####  Get Google MAPS API to render current location.
