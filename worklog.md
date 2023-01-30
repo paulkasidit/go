@@ -280,6 +280,8 @@ thisState = {
 ``` 
 
 #### If there is a user session, hide the login form. 
+
+* Expected State 
 ``` 
 thisState = {
   --> userIsLoggedIn: true, 
@@ -295,6 +297,7 @@ thisState = {
 
 #### If user already has a profile, hide the user questionnaire.  
 
+* Expected State 
 ``` 
 thisState = {
   --> userIsLoggedIn: true,
@@ -309,6 +312,8 @@ thisState = {
 ``` 
 
 #### If user does not have a profile, hide the user questionnaire. 
+
+* Expected State 
 ``` 
 thisState = {
   --> userIsLoggedIn: true,
@@ -323,6 +328,8 @@ thisState = {
 ```
 
 #### If user is logged in, has a profile, and has the null values set to a value, display the tripInfoContainer. 
+
+* Expected State 
 ``` 
 thisState = {
   --> userIsLoggedIn: true,
