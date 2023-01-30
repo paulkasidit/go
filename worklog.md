@@ -75,6 +75,8 @@
 
 ## Sign In Form 
 
+#### There should be a link to the registration form for users who do not have an account.
+
 #### Should return the current session of the user 
 ``` 
     username: "PAUL",
@@ -245,7 +247,97 @@ e.g {
   ``` 
    
 
+# TripInfoController  
 
+## Core Logic 
+### Initial State
+``` 
+intialState = {
+  userisLoggedIn: false, 
+  userHasProfile: false,
+  formVisible: true, 
+  selectedDestination: null,
+  selectedTripFrom: null,
+  selectedTripUntil: null, 
+  selectedDestinations: null,
+  homeLocation: null
+}
+``` 
+#### If there is currently no user session, render the login form. 
+
+* Expected State 
+``` 
+thisState = {
+  --> userIsLoggedIn: false, 
+  --> formVisible: true, 
+  selectedDestination: null,
+  selectedTripFrom: null,
+  selectedTripUntil: null, 
+  selectedDestinations: null,
+  homeLocation: null
+}
+``` 
+
+#### If there is a user session, hide the login form. 
+``` 
+thisState = {
+  --> userIsLoggedIn: true, 
+  userHasProfile: false,
+  --> formVisible: false, 
+  selectedDestination: null,
+  selectedTripFrom: null,
+  selectedTripUntil: null, 
+  selectedDestinations: null,
+  homeLocation: null
+}
+``` 
+
+#### If user already has a profile, hide the user questionnaire.  
+
+``` 
+thisState = {
+  --> userIsLoggedIn: true,
+  --> userHasProfile: true,
+  --> formVisible: false, 
+  selectedDestination: null,
+  selectedTripFrom: null,
+  selectedTripUntil: null, 
+  selectedDestinations: null,
+  homeLocation: null
+}
+``` 
+
+#### If user does not have a profile, hide the user questionnaire. 
+``` 
+thisState = {
+  --> userIsLoggedIn: true,
+  --> userHasProfile: true,
+  --> formVisible: false, 
+  selectedDestination: null,
+  selectedTripFrom: null,
+  selectedTripUntil: null, 
+  selectedDestinations: null,
+  homeLocation: null
+}
+```
+
+#### If user is logged in, has a profile, and has the null values set to a value, display the tripInfoContainer. 
+``` 
+thisState = {
+  --> userIsLoggedIn: true,
+  --> userHasProfile: true,
+  --> formVisible: false, 
+  --> selectedDestination: "A",
+  --> selectedTripFrom: "B",
+  --> selectedTripUntil: "C", 
+  --> selectedDestinations: "D",
+  --> homeLocation: "E"
+}
+```
+
+# MainController
+
+## Core Logic  
 
 
 
