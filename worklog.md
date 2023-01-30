@@ -269,6 +269,7 @@ intialState = {
 ``` 
 thisState = {
   --> userIsLoggedIn: false, 
+  userHasProfile: false,
   --> formVisible: true, 
   selectedDestination: null,
   selectedTripFrom: null,
