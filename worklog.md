@@ -19,7 +19,7 @@
   
 ``` 
 
-#### Should create new user entry into database on form submission 
+#### Should create new user entry into database on form submission.
 * e.g 
 ``` 
 {
@@ -75,10 +75,23 @@
 
 ## Sign In Form 
 
+#### Should return the current session of the user 
+``` 
+    username: "PAUL",
+    uuid: 1123556,
+    password: 23123123123 (hashed)
+    userProfile: {
+      interests: ["nightlife"]
+      budget: "high", 
+      accomodationPreference: ["bachelor","family"]
+    }
+    pastTrips: []
+``` 
+
 #### Example of form 
 
 ``` 
-  <form id = "registrationForm">
+  <form id = "signInForm">
     <input name = "username">Username</input>
     <input name = "password">Password</input>
   </form>
@@ -135,7 +148,105 @@
   ``` 
 
 ## 3. AirBnb API 
-#### JSON fields of the built userProfile "budget" & "accomodationPreferences" is fed into the AIRBNB API in order to determine appropriate accomodations"  
+#### JSON fields of the User Object's userProfile object "budget" & "accomodationPreferences" arrays is fed into the AIRBNB API in order to determine appropriate accomodations.   
 
 ####  AirBnb API displays atleast three accomodations mathcing the user preferences inside the given Airbnb component. 
+
+## 4. TripInfo 
+
+####  This component will be managed by state.
+
+* Example of fictional current state for website 
+``` 
+e.g { 
+  selectedDestination: "Paso Robles", 
+  selectedTripFrom: "12/23/23",
+  selectedTripUntil: "12/25/25",
+  selectedDestinations: ["Vina Robles Winery", "Booker Vineyards"],
+  homeLocation: "Los Angeles",
+  bookedTrip: false (? this will determine which forms to render in the tripInfo Container)
+} 
+``` 
+
+* Example of rendered content
+``` 
+  <div class = "tripInfoContainer>
+    <h1>Your { this.props.selectedDestination } itinerary </h1>
+    <ul>
+      <li> 
+        <p>{this.props.selectedTripFrom}</p>
+        <p>{this.props.selectedDestinations[0]}</p>
+      </li>
+      <li>
+        <p>{this.props.selectedTripFrom}</p>
+        <p>{this.props.selectedDestinations[1]}</p>
+      </li>
+    </ul>
+    <p>Checkout of your accomodation and head back to {this.props.homeLocation}</p>
+  </div>
+``` 
+#### onSubmit click handler for "BOOK" button 
+
+* Steps of execution
+  1. Hide all forms in FormController 
+  2. Your trip has been booked. 
+  3. Updates MongoDb database entry for the user
+
+  * Example form data: 
+  ``` 
+  {
+    selectedDestination: "Paso Robles", 
+    selectedTripFrom: "12/23/23",
+    selectedTripUntil: "12/25/25",
+    selectedDestinations: ["Vina Robles Winery", "Booker Vineyards"],
+    homeLocation: "Los Angeles",
+  }
+  ``` 
+  * Before: 
+  ``` 
+  { 
+    uuid: 1123556,
+    username: "PAUL",
+    password: 23123123123 (hashed)
+    userProfile: {
+      interests: ["nightlife","dining"]
+      budget: "high", 
+      accomodationPreference: "bachelor"
+    }
+    pastTrips: []
+  }
+  ```
+
+  * After: 
+
+  ``` 
+  { 
+    uuid: 1123556,
+    username: "PAUL",
+    password: 23123123123 (hashed)
+    userProfile: {
+      interests: ["nightlife","dining"]
+      budget: "high", 
+      accomodationPreference: "bachelor"
+    }
+    pastTrips: [
+      id: 1: {
+        destination: "Paso Robles", 
+        tripFrom: "12/23/23",
+        tripUntil: "12/25/25",
+        accomodation: "123 Sixteen Ave". 
+        accomodationLink: "www.airbnb/accomodation.com",
+        visitedDestinations: [
+          "Vina Robles Winery",
+          "Booker Vineyards"
+        ]
+      }
+  }
+  ``` 
+   
+
+
+
+
+
 
