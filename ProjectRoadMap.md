@@ -295,7 +295,7 @@ thisState = {
 }
 ``` 
 
-#### If user already has a profile, hide the user questionnaire.  
+#### If user is logged in and already has a profile, hide the user questionnaire.  
 
 * Expected State 
 ``` 
@@ -311,14 +311,14 @@ thisState = {
 }
 ``` 
 
-#### If user does not have a profile, hide the user questionnaire. 
+#### If user is logged in, but does not have a profile, display the user questionnaire. 
 
 * Expected State 
 ``` 
 thisState = {
   --> userIsLoggedIn: true,
   --> userHasProfile: true,
-  --> formVisible: false, 
+  --> formVisible: true, 
   selectedDestination: null,
   selectedTripFrom: null,
   selectedTripUntil: null, 
@@ -347,6 +347,6 @@ thisState = {
 
 ## Core Logic  
 
-
+#### Async function to wait for Google Maps API component to finish executing before executing Airbnb API component 
 
 
