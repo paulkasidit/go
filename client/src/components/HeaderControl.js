@@ -20,7 +20,16 @@ function HeaderControl(){
               <SearchBar/>
             </div>
               <nav class = "is-breadcrumb is-right">
-                <AccountInfo/ >
+                <div class = "columns is-gapless">
+                  <div class = "column">
+                    <AccountInfo/>
+                  </div>
+                  <div class = "column">
+                    <button class = "button is-outlined">
+                      <a href = "#">Logout</a>
+                    </button>
+                  </div>
+                </div>
               </nav>
           </div>
         </div>
