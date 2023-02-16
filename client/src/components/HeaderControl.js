@@ -8,7 +8,10 @@ import AccountInfo from './Header/AccountInfo';
 function HeaderControl(){
   
   const [userIsLoggedIn, setUserIsLoggedIn] = useState(false);
-
+  const [accountInfoVisibleOnPage, setAccountInfoVisibleOnPage] = useState(false);
+  let buttonText = null;
+  let currentlyVisibleState = null; 
+  
     return(
       <React.Fragment>
         <div class = "headerContainer">
