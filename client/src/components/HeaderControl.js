@@ -7,10 +7,18 @@ import AccountInfo from './Header/AccountInfo';
 
 function HeaderControl(){
   
-  const [userIsLoggedIn, setUserIsLoggedIn] = useState(false);
-  const [accountInfoVisibleOnPage, setAccountInfoVisibleOnPage] = useState(false);
+  const [userIsLoggedIn, setUserIsLoggedIn] = useState(true);
+  const [accountInfoVisibleOnPage, setAccountInfoVisibleOnPage] = useState(true);
+  
   let buttonText = null;
   let currentlyVisibleState = null; 
+
+  if (accountInfoVisibleOnPage){
+    currentlyVisibleState = <AccountInfo/>
+    buttonText = "Log Out";
+  } else {
+    buttonText = "Log In";
+  }
   
     return(
       <React.Fragment>
@@ -25,11 +33,11 @@ function HeaderControl(){
               <nav class = "is-breadcrumb is-right">
                 <div class = "columns is-gapless">
                   <div class = "column">
-                    <AccountInfo/>
+                    {currentlyVisibleState}
                   </div>
                   <div class = "column">
                     <button class = "button is-outlined">
-                      <a href = "#">Logout</a>
+                      {buttonText}
                     </button>
                   </div>
                 </div>
