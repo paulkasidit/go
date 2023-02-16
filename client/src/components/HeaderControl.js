@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import "./Header/Header.css"
 import Navbar from './Header/NavBar'; 
 import SearchBar from './Header/SearchBar';
 import AccountDetail from './Header/AccountDetail';
 import AccountInfo from './Header/AccountInfo'; 
 
-class HeaderControl extends React.Component {
+function HeaderControl(){
   
-  render(){
+  const [userIsLoggedIn, setUserIsLoggedIn] = useState(false);
+
     return(
       <React.Fragment>
         <div class = "headerContainer">
@@ -19,13 +20,12 @@ class HeaderControl extends React.Component {
               <SearchBar/>
             </div>
               <nav class = "is-breadcrumb is-right">
-                <AccountInfo/>
+                <AccountInfo/ >
               </nav>
           </div>
         </div>
       </React.Fragment>
     )
-  }
 
 };
 
