@@ -5,20 +5,21 @@ import SearchBar from './Header/SearchBar';
 import AccountDetail from './Header/AccountDetail';
 import AccountInfo from './Header/AccountInfo'; 
 import LoginButton from './Header/LoginButton';
-
+import LogoutButton from './Header/LogoutButton';
+import { faListCheck, faTruckField, faTruckFieldUn } from '@fortawesome/free-solid-svg-icons';
 function HeaderControl(){
   
   const [userIsLoggedIn, setUserIsLoggedIn] = useState(false);
   const [accountInfoVisibleOnPage, setAccountInfoVisibleOnPage] = useState(false);
   
-  let buttonText = null;
+  let sessionButton = null;
   let currentlyVisibleState = null; 
 
   if (accountInfoVisibleOnPage){
     currentlyVisibleState = <AccountInfo/>
-    buttonText = "Log Out";
+    sessionButton = <LogoutButton/>;
   } else {
-    buttonText = "Log In";
+    sessionButton = <LoginButton/>;
   }
   
     return(
@@ -37,7 +38,7 @@ function HeaderControl(){
                     {currentlyVisibleState}
                   </div>
                   <div class = "column">
-                    <LoginButton/>
+                      {sessionButton}
                   </div>
                 </div>
               </nav>
