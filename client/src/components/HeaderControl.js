@@ -4,6 +4,7 @@ import Navbar from './Header/NavBar';
 import SearchBar from './Header/SearchBar';
 import AccountDetail from './Header/AccountDetail';
 import AccountInfo from './Header/AccountInfo'; 
+import LoginButton from './Header/LoginButton';
 
 function HeaderControl(){
   
@@ -36,9 +37,7 @@ function HeaderControl(){
                     {currentlyVisibleState}
                   </div>
                   <div class = "column">
-                    <button class = "button is-outlined">
-                      {buttonText}
-                    </button>
+                    <LoginButton/>
                   </div>
                 </div>
               </nav>
@@ -46,7 +45,7 @@ function HeaderControl(){
         </div>
       </React.Fragment>
     )
-
 };
+
 
 export default HeaderControl;
