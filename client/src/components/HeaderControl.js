@@ -7,6 +7,7 @@ import AccountInfo from './Header/AccountInfo';
 import LoginButton from './Header/LoginButton';
 import LogoutButton from './Header/LogoutButton';
 import { faListCheck, faTruckField, faTruckFieldUn } from '@fortawesome/free-solid-svg-icons';
+
 function HeaderControl(){
   
   const [userIsLoggedIn, setUserIsLoggedIn] = useState(false);
@@ -38,7 +39,7 @@ function HeaderControl(){
                     {currentlyVisibleState}
                   </div>
                   <div class = "column">
-                      {sessionButton}
+                    {sessionButton}
                   </div>
                 </div>
               </nav>
