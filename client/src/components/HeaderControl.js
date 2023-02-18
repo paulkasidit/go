@@ -10,9 +10,7 @@ import { faListCheck, faTruckField, faTruckFieldUn } from '@fortawesome/free-sol
 import { useAuth0 } from '@auth0/auth0-react';
 
 function HeaderControl(){
-  
-  const [userIsLoggedIn, setUserIsLoggedIn] = useState(false);
-  const [accountInfoVisibleOnPage, setAccountInfoVisibleOnPage] = useState(false);
+
   const {user, isAuthenticated, isLoading} = useAuth0();
 
   let sessionButton = null;
