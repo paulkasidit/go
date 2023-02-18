@@ -17,7 +17,7 @@ function HeaderControl(){
   let currentlyVisibleState = null; 
   
   if (isAuthenticated){
-    currentlyVisibleState = <AccountInfo/>
+    currentlyVisibleState = <AccountInfo user = {user}/>
     sessionButton = <LogoutButton/>
   } else { 
     sessionButton = <LoginButton/>

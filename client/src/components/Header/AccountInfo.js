@@ -4,10 +4,11 @@ import "./Header.css";
 
 function AccountInfo(props) { 
 
-  const { account, onClickingAccountInfo, onClickingYourTrips } = props;
+  const { user } = props;
   
   return (
     <React.Fragment>
+      <p>{user.user_id}</p>
       <div class = "columns is-gapless">
         <div class = "column">
           <button class = "button is-outlined">
