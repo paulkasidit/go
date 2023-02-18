@@ -5,7 +5,9 @@ import "./Main.css";
 function GoogleMapsAPI() { 
   return (
     <React.Fragment>
-      <img src={googleMapsImage} alt="Google Maps example" />
+      <div class = "box">
+        <img src={googleMapsImage} alt="Google Maps example" />
+      </div>
     </React.Fragment>
   )
 }
