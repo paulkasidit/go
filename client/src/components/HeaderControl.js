@@ -7,22 +7,23 @@ import AccountInfo from './Header/AccountInfo';
 import LoginButton from './Header/LoginButton';
 import LogoutButton from './Header/LogoutButton';
 import { faListCheck, faTruckField, faTruckFieldUn } from '@fortawesome/free-solid-svg-icons';
+import { useAuth0 } from '@auth0/auth0-react';
 
 function HeaderControl(){
   
   const [userIsLoggedIn, setUserIsLoggedIn] = useState(false);
   const [accountInfoVisibleOnPage, setAccountInfoVisibleOnPage] = useState(false);
-  
+  const {user, isAuthenticated, isLoading} = useAuth0();
+
   let sessionButton = null;
   let currentlyVisibleState = null; 
-
-  if (accountInfoVisibleOnPage){
-    currentlyVisibleState = <AccountInfo/>
-    sessionButton = <LogoutButton/>;
-  } else {
-    sessionButton = <LoginButton/>;
-  }
   
+  if (isAuthenticated){
+    currentlyVisibleState = <AccountInfo/>
+    sessionButton = <LogoutButton/>
+  } else { 
+    sessionButton = <LoginButton/>
+  }
     return(
       <React.Fragment>
         <div class = "headerContainer">
