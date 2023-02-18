@@ -2,10 +2,18 @@ import React from "react";
 import "./TripInfo.css";  
 
 function StarterQuestionnaire(){
+
+  function handleStarterQuestionnaireFormSubmission(event){
+    event.preventDefault();
+    console.log(event.target.tripInterests.value)
+    console.log(event.target.accomodationPreference.value)
+    console.log(event.target.accomodationBudget.value)
+  }
+
   return(
     <React.Fragment>
       <div class = "box">
-        <form>
+        <form onSubmit = {handleStarterQuestionnaireFormSubmission}>
           <p>What are your interests?</p>
           <div class = "control">
               <label class = "radio">
@@ -89,6 +97,7 @@ function StarterQuestionnaire(){
                   $$$
               </label>
             </div>
+            <button type = "submit">Submit</button>
         </form>
       </div>
     </React.Fragment>
