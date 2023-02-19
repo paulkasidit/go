@@ -1,13 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import "./Header/Header.css"
 import Navbar from './Header/NavBar'; 
 import SearchBar from './Header/SearchBar';
 import AccountDetail from './Header/AccountDetail';
 import AccountInfo from './Header/AccountInfo'; 
+import LoginButton from './Header/LoginButton';
+import LogoutButton from './Header/LogoutButton';
+import { faListCheck, faTruckField, faTruckFieldUn } from '@fortawesome/free-solid-svg-icons';
+import { useAuth0 } from '@auth0/auth0-react';
 
-class HeaderControl extends React.Component {
+function HeaderControl(){
+
+  const {user, isAuthenticated, isLoading} = useAuth0();
+
+  let sessionButton = null;
+  let currentlyVisibleState = null; 
   
-  render(){
+  if (isAuthenticated){
+    currentlyVisibleState = <AccountInfo user = {user}/>
+    sessionButton = <LogoutButton/>
+  } else { 
+    sessionButton = <LoginButton/>
+  }
     return(
       <React.Fragment>
         <div class = "headerContainer">
@@ -19,14 +33,20 @@ class HeaderControl extends React.Component {
               <SearchBar/>
             </div>
               <nav class = "is-breadcrumb is-right">
-                <AccountInfo/>
+                <div class = "columns is-gapless">
+                  <div class = "column">
+                    {currentlyVisibleState}
+                  </div>
+                  <div class = "column">
+                    {sessionButton}
+                  </div>
+                </div>
               </nav>
           </div>
         </div>
       </React.Fragment>
     )
-  }
-
 };
+
 
 export default HeaderControl;
