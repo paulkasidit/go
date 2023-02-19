@@ -1,18 +1,29 @@
 import React from "react";
 import "./TripInfo.css";  
+import PropTypes from "prop-types"; 
+import { v4 } from 'uuid';  
 
-function StarterQuestionnaire(){
+function StarterQuestionnaire(props){
+
+  const { user } = props 
 
   function handleStarterQuestionnaireFormSubmission(event){
     event.preventDefault();
-    console.log(event.target.tripInterests.value)
-    console.log(event.target.accomodationPreference.value)
-    console.log(event.target.accomodationBudget.value)
+    props.onNewUserProfileCreation({
+      id: v4(),
+      username: user.email,
+      tripInterests: event.target.tripInterests.value, 
+      accomodationBudget: event.target.accomodationBudget.value,
+      accomodationPreference: event.target.accomodationPreference.value
+    })
   }
 
   return(
     <React.Fragment>
       <div class = "box">
+        <h1 class = "title">Looks like it's your first time here, 
+        we'd like to get to know you better. 
+        </h1>
         <form onSubmit = {handleStarterQuestionnaireFormSubmission}>
           <p>What are your interests?</p>
           <div class = "control">
@@ -97,11 +108,16 @@ function StarterQuestionnaire(){
                   $$$
               </label>
             </div>
-            <button type = "submit">Submit</button>
+            <br/>
+            <button class = "button is-medium is-fullwidth is-outlined is-info has-background-white" type = "submit">Submit</button>
         </form>
       </div>
     </React.Fragment>
   )
+}
+
+StarterQuestionnaire.propTypes = { 
+  onNewUserProfileCreation: PropTypes.func
 }
 
 export default StarterQuestionnaire

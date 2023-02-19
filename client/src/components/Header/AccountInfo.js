@@ -4,7 +4,7 @@ import "./Header.css";
 
 function AccountInfo(props) { 
 
-  const { user } = props;
+  const { user } = props
   
   return (
     <React.Fragment>
