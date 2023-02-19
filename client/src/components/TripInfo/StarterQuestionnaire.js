@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./TripInfo.css";  
 import PropTypes from "prop-types"; 
 import { v4 } from 'uuid';  
@@ -6,17 +6,25 @@ import { v4 } from 'uuid';
 function StarterQuestionnaire(props){
 
   const { user } = props 
+  // function handleStarterQuestionnaireFormSubmission(event){
+  //   event.preventDefault();
+  //   props.onNewUserProfileCreation({
+  //     id: v4(),
+  //     username: user.email,
+  //     tripInterests: event.target.tripInterests.value, 
+  //     accomodationBudget: event.target.accomodationBudget.value,
+  //     accomodationPreference: event.target.accomodationPreference.value,
+  //     pastTrips: {}
+  //   })
+  // }
 
-  function handleStarterQuestionnaireFormSubmission(event){
-    event.preventDefault();
-    props.onNewUserProfileCreation({
-      id: v4(),
-      username: user.email,
-      tripInterests: event.target.tripInterests.value, 
-      accomodationBudget: event.target.accomodationBudget.value,
-      accomodationPreference: event.target.accomodationPreference.value
-    })
-  }
+  const [form, setForm] = useState({
+    username: "",
+    tripInterests: "",
+    accomodationBudget: "",
+    accomodationPreference: "", 
+    pastTrips: {}
+  })
 
   return(
     <React.Fragment>
