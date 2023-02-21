@@ -1,22 +1,12 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router";
 import "./TripInfo.css";  
 import PropTypes from "prop-types"; 
 import { v4 } from 'uuid';  
 
-function StarterQuestionnaire(props){
+export default function StarterQuestionnaire(props){
 
   const { user } = props 
-  // function handleStarterQuestionnaireFormSubmission(event){
-  //   event.preventDefault();
-  //   props.onNewUserProfileCreation({
-  //     id: v4(),
-  //     username: user.email,
-  //     tripInterests: event.target.tripInterests.value, 
-  //     accomodationBudget: event.target.accomodationBudget.value,
-  //     accomodationPreference: event.target.accomodationPreference.value,
-  //     pastTrips: {}
-  //   })
-  // }
 
   const [form, setForm] = useState({
     username: "",
@@ -25,6 +15,39 @@ function StarterQuestionnaire(props){
     accomodationPreference: "", 
     pastTrips: {}
   })
+
+  function updateForm(value) { 
+    return setForm((prev) => {
+      return {...prev, ...value};
+    })
+  }
+
+  async function handleStarterQuestionnaireFormSubmission(event){
+    event.preventDefault();
+
+    const newUserProfile = {...form};
+
+    await fetch("http://localhost:5000/record/add",{
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newUserProfile),
+    })
+    .catch(error => {
+      window.alert(error);
+      return;
+    });
+
+    setForm({
+      username: "",
+      tripInterests: "",
+      accomodationBudget: "",
+      accomodationPreference: "", 
+      pastTrips: {}
+    });
+    navigate("/");
+  }
 
   return(
     <React.Fragment>
@@ -41,6 +64,8 @@ function StarterQuestionnaire(props){
                   name = "tripInterests"
                   value = "outdoors"
                   id  = "outdoors"
+                  checked = {form.tripInterests === "outdoors"}
+                  onChange = {(event) => updateForm({tripInterests: event.target.value})}
                 />
                 Outdoors
               </label>
@@ -50,6 +75,8 @@ function StarterQuestionnaire(props){
                   name = "tripInterests"
                   value = "nightlife"
                   id  = "nightlife"
+                  checked = {form.tripInterests === "nightlife"}
+                  onChange = {(event) => updateForm({tripInterests: event.target.value})}
                 />
                 Nightlife
               </label>
@@ -59,6 +86,8 @@ function StarterQuestionnaire(props){
                   name = "tripInterests"
                   value = "dining"
                   id  = "dining"
+                  checked = {form.tripInterests === "dining"}
+                  onChange = {(event) => updateForm({tripInterests: event.target.value})}
                 />
                 Dining
               </label>
@@ -72,6 +101,8 @@ function StarterQuestionnaire(props){
                   name = "accomodationPreference"
                   value = "family"
                   id  = "family"
+                  checked = {form.accomodationPreference === "family"}
+                  onChange = {(event) => updateForm({accomodationPreference: event.target.value})}
                 />
                 Family
               </label>
@@ -79,8 +110,10 @@ function StarterQuestionnaire(props){
                 <input 
                   type = "radio"
                   name = "accomodationPreference"
-                  value = "dining"
-                  id  = "dining"
+                  value = "bachelor"
+                  id  = "bachelor"
+                  checked = {form.accomodationPreference === "bachelor"}
+                  onChange = {(event) => updateForm({accomodationPreference: event.target.value})}
                 />
                 Bachelor
               </label>
@@ -94,6 +127,8 @@ function StarterQuestionnaire(props){
                     name = "accomodationBudget"
                     value = "low"
                     id  = "low"
+                    checked = {form.accomodationBudget === "low"}
+                    onChange = {(event) => updateForm({accomodationBudget: event.target.value})}
                   />
                   $
               </label>
@@ -103,6 +138,8 @@ function StarterQuestionnaire(props){
                     name = "accomodationBudget"
                     value = "middle"
                     id  = "middle"
+                    checked = {form.accomodationBudget === "middle"}
+                    onChange = {(event) => updateForm({accomodationBudget: event.target.value})}
                   />
                   $$
               </label>
@@ -112,6 +149,8 @@ function StarterQuestionnaire(props){
                     name = "accomodationBudget"
                     value = "high"
                     id  = "high"
+                    checked = {form.accomodationBudget === "high"}
+                    onChange = {(event) => updateForm({accomodationBudget: event.target.value})}
                   />
                   $$$
               </label>
@@ -127,5 +166,3 @@ function StarterQuestionnaire(props){
 StarterQuestionnaire.propTypes = { 
   onNewUserProfileCreation: PropTypes.func
 }
-
-export default StarterQuestionnaire
