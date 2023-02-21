@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router";
 import "./TripInfo.css";  
 import PropTypes from "prop-types"; 
-import { v4 } from 'uuid';  
 
 export default function StarterQuestionnaire(props){
 
@@ -15,6 +14,7 @@ export default function StarterQuestionnaire(props){
     accomodationPreference: "", 
     pastTrips: {}
   })
+  const navigate = useNavigate();
 
   function updateForm(value) { 
     return setForm((prev) => {
@@ -40,7 +40,7 @@ export default function StarterQuestionnaire(props){
     });
 
     setForm({
-      username: "",
+      username: user.email,
       tripInterests: "",
       accomodationBudget: "",
       accomodationPreference: "", 

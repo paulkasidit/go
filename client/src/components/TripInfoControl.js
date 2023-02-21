@@ -18,13 +18,26 @@ function TripInfoControl (){
     console.log(currentUserProfile)
   }
 
-  let currentlyVisibleState = null
+  let currentlyVisibleState = null;
+  let currentlyVisibleForm = null;
+
+  if(isAuthenticated && !userHasProfile){
+    currentlyVisibleForm =  <StarterQuestionnaire
+                              user = {user}
+                              onNewUserProfileCreation = {handleNewUserProfileCreation}/>
+    currentlyVisibleState = null
+  } else if(isAuthenticated && userHasProfile) {
+    currentlyVisibleForm = <DateInputForm/>
+    currentlyVisibleState = <TripInfo/> 
+  } else {
+    currentlyVisibleForm = null
+    currentlyVisibleState = null
+  }
   
   return(
     <React.Fragment>
-      <StarterQuestionnaire
-      user = {user}
-      onNewUserProfileCreation = {handleNewUserProfileCreation}/>
+      {currentlyVisibleForm}
+      {currentlyVisibleState}
     </React.Fragment>
   )
   
