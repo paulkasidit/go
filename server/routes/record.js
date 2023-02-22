@@ -39,7 +39,7 @@ recordRoutes.route("/record/:id").get(function (req, res) {
 // This section will help you get a single record by username
 recordRoutes.route("/record/:username").get(function (req, res) {
   let db_connect = dbo.getDb();
-  let myquery = { _id: ObjectId(req.params.id) };
+  let myquery = { username: ObjectId(req.params.username) };
   db_connect
     .collection("records")
     .findOne(myquery, function (err, result) {
