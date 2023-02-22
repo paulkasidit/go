@@ -29,10 +29,16 @@ function TripInfoControl (){
         const foundUserProfile = records[key]
         setUserHasProfile(true);
         return foundUserProfile;
+      } else {
+        setUserHasProfile(false);
       }
     });
   }
-  getUserInformation(user)
+
+  if (isAuthenticated){
+     getUserInformation(user)
+  }
+
 
   //Function to handle the creation of a new User Profile
   const handleNewUserProfileCreation = (newUserProfile) => { 
