@@ -8,7 +8,7 @@ export default function StarterQuestionnaire(props){
   const { user } = props 
 
   const [form, setForm] = useState({
-    username: "",
+    username: user.email,
     tripInterests: "",
     accomodationBudget: "",
     accomodationPreference: "", 
