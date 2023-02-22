@@ -7,7 +7,7 @@ import StarterQuestionnaire from './TripInfo/StarterQuestionnaire';
 import { useAuth0 } from '@auth0/auth0-react';
 
 function TripInfoControl (){
-  //Hooks for checking if user is authenticated, for the current userProfile,
+  // Hooks for checking if user is authenticated, for the current userProfile,
   // and checking if the user has a profile(to decide what to render)
   const {user, isAuthenticated, isLoading} = useAuth0();
   const [userProfile, setUserProfile] = useState([]);
@@ -27,6 +27,8 @@ function TripInfoControl (){
       const [key, value] = entry;
       if (value.username === user.email){
         const foundUserProfile = records[key]
+        const currentUserProfile = userProfile.concat(foundUserProfile);
+        setUserProfile(currentUserProfile);
         setUserHasProfile(true);
         return foundUserProfile;
       } else {
