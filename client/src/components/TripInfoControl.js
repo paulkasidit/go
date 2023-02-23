@@ -15,7 +15,7 @@ function TripInfoControl (){
 
   //Function to check if the user already has a profile and to set the userProfile hook
   async function getUserInformation(user) {
-    const response = await fetch(`http://localhost:5000/record/`);
+    const response = await fetch('http://localhost:5000/record/');
     if (!response.ok) {
       const message = `An error occurred: ${response.statusText}`;
       window.alert(message);
@@ -36,6 +36,8 @@ function TripInfoControl (){
       }
     });
   }
+
+  console.log(process.env.REACT_APP_MONGODB_USER_PROFILES_DATABASE_GET_ROUTE); 
 
   if (isAuthenticated){
      getUserInformation(user)
