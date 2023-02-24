@@ -1,19 +1,27 @@
-import React from 'react';
+import React, { useState} from "react";
 import "./App.css";
 import "./Main/Main.css"
 import AirbnbAPI from './Main/AirbnbAPI';
 import GoogleMapsAPI from './Main/GoogleMapsAPI';
 
-class MainControl extends React.Component {
+function MainControl (){
 
-  render(){
+  const [lat, setLat] = useState(null);
+  const [lng, setLng] = useState(null);
+  const [geoLocationStatus, setGeoLocationStatus] = useState(null);
+
+
+  const currentLocation = {
+    center: {lat: 40.73, lng: -73.93}, 
+    zoom: 12
+  }
+
     return(
       <React.Fragment>
-        <GoogleMapsAPI/>
+        {/* <GoogleMapsAPI
+        currentLocation = {currentLocation}/> */}
       </React.Fragment>
-    )
-  }
-  
+    ) 
 };
 
 export default MainControl;

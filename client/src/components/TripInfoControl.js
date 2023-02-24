@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
 import "./App.css";
 import "./TripInfo/TripInfo.css"; 
 import TripInfo from './TripInfo/TripInfo';
@@ -9,7 +9,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 function TripInfoControl (){
   // Hooks for checking if user is authenticated, for the current userProfile,
   // and checking if the user has a profile(to decide what to render)
-  const {user, isAuthenticated, isLoading} = useAuth0();
+  const {user, isAuthenticated} = useAuth0();
   const [userProfile, setUserProfile] = useState([]);
   const [userHasProfile, setUserHasProfile] = useState(false);
 

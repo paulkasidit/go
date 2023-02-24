@@ -1,15 +1,24 @@
 import React from "react";
-import googleMapsImage from "../../img/googlemaps.png"
+import GoogleMapReact from 'google-map-react';
 import "./Main.css";  
 
-function GoogleMapsAPI() { 
+function GoogleMapsAPI(props) { 
+
+  const {currentLocation} = props;
+
   return (
     <React.Fragment>
-      <div class = "box">
-        <img src={googleMapsImage} alt="Google Maps example" />
-      </div>
+        <GoogleMapReact
+          bootstrapURLKeys = {{
+            key: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
+            language:'en'
+          }}
+          center = {currentLocation.center}
+          zoom = {currentLocation.zoom}
+        />
     </React.Fragment>
   )
 }
+
 
 export default GoogleMapsAPI;
