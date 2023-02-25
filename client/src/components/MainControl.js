@@ -15,11 +15,15 @@ function MainControl (){
     center: {lat: 40.73, lng: -73.93}, 
     zoom: 12
   }
+  
+  let currentlyVisibleState = <GoogleMapsAPI currentLocation = {currentLocation}/> 
+  // <GoogleMapsAPI currentLocation = {currentLocation}/>
 
     return(
       <React.Fragment>
-        {/* <GoogleMapsAPI
-        currentLocation = {currentLocation}/> */}
+      <div class = "googleMapsContainer">
+        {currentlyVisibleState}
+      </div>
       </React.Fragment>
     ) 
 };
