@@ -1,5 +1,6 @@
 import React from "react";
 import GoogleMapReact from 'google-map-react';
+import PropTypes from "prop-types"; 
 import "./Main.css";  
 
 function GoogleMapsAPI(props) { 
@@ -7,11 +8,10 @@ function GoogleMapsAPI(props) {
   const {currentLocation} = props;
 
   return (
-      <div style = {{ height: '100%', width: '100%'}}>
+      <div class = "googleMapsContainer">
         <GoogleMapReact
                   bootstrapURLKeys = {{
                     key: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
-                    language:'en'
                   }}
                   yesIWantToUseGoogleMapApiInternals = {true}
                   center = {currentLocation.center}
@@ -21,5 +21,8 @@ function GoogleMapsAPI(props) {
   )
 }
 
+GoogleMapsAPI.propTypes = { 
+  currentLocation: PropTypes.object
+}
 
 export default GoogleMapsAPI;

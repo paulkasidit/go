@@ -15,11 +15,9 @@ root.render(
     redirect_uri: window.location.origin
   }}
   >
-    <React.StrictMode>
       <BrowserRouter>
         <App/>
       </BrowserRouter>
-    </React.StrictMode>
   </Auth0Provider>,
   document.getElementById("root")
 );
