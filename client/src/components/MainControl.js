@@ -1,18 +1,30 @@
-import React, { useState} from "react";
+import React, { useState, useEffect} from "react";
 import "./App.css";
 import "./Main/Main.css"
 import AirbnbAPI from './Main/AirbnbAPI';
 import GoogleMapsAPI from './Main/GoogleMapsAPI';
 
 function MainControl (){
+  //Hooks to set the current location for user
+  const [lat, setLat] = useState(null);
+  const [lng, setLng] = useState(null);
+  const [userAllowedCurrentLocation, setUserAllowedCurrentLocation ] = useState(false);
 
-  const currentLocation = {
-    center: {lat: 40.73, lng: -73.93}, 
+  //Default location that will be rendered on page loading. 
+  const userCurrentLocation = {
+    center: {lat: lat, lng: lng}, 
     zoom: 12
   }
   
-  let currentlyVisibleState =  <GoogleMapsAPI currentLocation = {currentLocation}/>
-  // <GoogleMapsAPI currentLocation = {currentLocation}/>
+  //Getting the user's current location 
+  useEffect(() => {
+      navigator.geolocation.getCurrentPosition(function(position){
+      setLat(position.coords.latitude)
+      setLng(position.coords.longitude)
+    });
+  })
+
+  let currentlyVisibleState =  <GoogleMapsAPI currentLocation = {userCurrentLocation}/>
 
     return(
       <React.Fragment>
