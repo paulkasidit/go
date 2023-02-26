@@ -3,12 +3,12 @@ import "./App.css";
 import "./Main/Main.css"
 import AirbnbAPI from './Main/AirbnbAPI';
 import GoogleMapsAPI from './Main/GoogleMapsAPI';
+import LocationMarker from "./Main/LocationMarker";
 
 function MainControl (){
   //Hooks to set the current location for user
   const [lat, setLat] = useState(null);
   const [lng, setLng] = useState(null);
-  const [userAllowedCurrentLocation, setUserAllowedCurrentLocation ] = useState(false);
 
   //Default location that will be rendered on page loading. 
   const userCurrentLocation = {
@@ -24,7 +24,14 @@ function MainControl (){
     });
   })
 
-  let currentlyVisibleState =  <GoogleMapsAPI currentLocation = {userCurrentLocation}/>
+  let currentlyVisibleState =  <GoogleMapsAPI 
+                                userCurrentLocation = {userCurrentLocation}>
+                               <LocationMarker 
+                                lat = {userCurrentLocation.center.lat}
+                                lng = {userCurrentLocation.center.lng}
+                                text = "Hello"/>
+                                </GoogleMapsAPI>    
+
 
     return(
       <React.Fragment>
