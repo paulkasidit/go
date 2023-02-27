@@ -20,12 +20,14 @@ function GoogleMapsAPI(props) {
                   zoom = {userCurrentLocation.zoom}
         >
         {pinsList.map(pins => {
+                return(
                   <LocationMarker
                   id = {pins.id}
                   lat = {pins.lat}
                   lng = {pins.lng}
                   text = {pins.text}
                   />
+                )
               }
           )
         }
@@ -33,6 +35,7 @@ function GoogleMapsAPI(props) {
       </div>
   )
 }
+
 
 GoogleMapsAPI.propTypes = { 
   currentLocation: PropTypes.object,

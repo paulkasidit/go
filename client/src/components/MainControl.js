@@ -18,6 +18,8 @@ function MainControl (){
   //Getting the user's current location 
   useEffect(() => {
       navigator.geolocation.getCurrentPosition(function(position){
+      console.log(position.coords.latitude)
+      console.log(position.coords.longitude)
       setLat(position.coords.latitude)
       setLng(position.coords.longitude)
     });
@@ -26,14 +28,14 @@ function MainControl (){
   const markers = [ 
     {
       id:1, 
-      lat: 39.5299,//userCurrentLocation.center.lat,
-      lng: 119.8143,//userCurrentLocation.center.lng,
+      lat: userCurrentLocation.center.lat,
+      lng: userCurrentLocation.center.lng,
       text: "HOME"
     },
     {
       id:2, 
       lat: 39.5299, 
-      lng: 119.8143, 
+      lng: -119.8143, 
       text: "DESTINATION"
     }
   ]
