@@ -9,7 +9,7 @@ export default function LocationMarker(props){
 
   return(
     <span class = "icon-text">
-      <span> {text} </span>
+      <div class = "box radius-large"> {text} </div>
         <span class = "icon">
         <FontAwesomeIcon icon="fa-solid fa-location-dot" />
       </span>
