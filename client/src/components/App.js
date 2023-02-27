@@ -6,8 +6,10 @@ import 'bulma/css/bulma.min.css';
 import './App.css';
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 
 library.add(faArrowRight); 
+library.add(faLocationDot); 
 
 function App(){
   return(

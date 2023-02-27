@@ -1,14 +1,14 @@
 import React from "react";
 import GoogleMapReact from 'google-map-react';
 import PropTypes from "prop-types"; 
+import LocationMarker from "./LocationMarker";
 import "./Main.css";  
-
-const AnyReactComponent = ({ text }) => <div>{text}</div>; 
 
 function GoogleMapsAPI(props) { 
 
-  const {userCurrentLocation} = props;
+  const {userCurrentLocation, pinsList} = props;
 
+  console.log(pinsList)
   return (
       <div class = "googleMapsContainer">
         <GoogleMapReact
@@ -19,18 +19,24 @@ function GoogleMapsAPI(props) {
                   center = {userCurrentLocation.center}
                   zoom = {userCurrentLocation.zoom}
         >
-        <AnyReactComponent
-          lat =  {userCurrentLocation.center.lat}
-          lng =  {userCurrentLocation.center.lng}
-          text = "hello"
-        />
+        {pinsList.map(pins => {
+                  <LocationMarker
+                  id = {pins.id}
+                  lat = {pins.lat}
+                  lng = {pins.lng}
+                  text = {pins.text}
+                  />
+              }
+          )
+        }
         </GoogleMapReact>
       </div>
   )
 }
 
 GoogleMapsAPI.propTypes = { 
-  currentLocation: PropTypes.object
+  currentLocation: PropTypes.object,
+  pinComponent: PropTypes.object
 }
 
 export default GoogleMapsAPI;

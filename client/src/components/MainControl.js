@@ -3,7 +3,6 @@ import "./App.css";
 import "./Main/Main.css"
 import AirbnbAPI from './Main/AirbnbAPI';
 import GoogleMapsAPI from './Main/GoogleMapsAPI';
-import LocationMarker from "./Main/LocationMarker";
 
 function MainControl (){
   //Hooks to set the current location for user
@@ -24,14 +23,25 @@ function MainControl (){
     });
   })
 
-  let currentlyVisibleState =  <GoogleMapsAPI 
-                                userCurrentLocation = {userCurrentLocation}>
-                               <LocationMarker 
-                                lat = {userCurrentLocation.center.lat}
-                                lng = {userCurrentLocation.center.lng}
-                                text = "Hello"/>
-                                </GoogleMapsAPI>    
+  const markers = [ 
+    {
+      id:1, 
+      lat: 39.5299,//userCurrentLocation.center.lat,
+      lng: 119.8143,//userCurrentLocation.center.lng,
+      text: "HOME"
+    },
+    {
+      id:2, 
+      lat: 39.5299, 
+      lng: 119.8143, 
+      text: "DESTINATION"
+    }
+  ]
 
+  let currentlyVisibleState =  <GoogleMapsAPI 
+                                userCurrentLocation = {userCurrentLocation}
+                                pinsList = {markers}
+                                />
 
     return(
       <React.Fragment>

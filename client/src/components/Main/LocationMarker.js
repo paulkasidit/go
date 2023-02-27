@@ -1,15 +1,19 @@
 import React from "react"; 
 import PropTypes from "prop-types";  
 import "./Main.css";   
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome' 
 
 export default function LocationMarker(props){
 
-  const {lat, lng, text} = props; 
+  const {id, lat, lng, text} = props; 
 
   return(
-    <div class = "markedLocationPin"> 
-      {text}
-    </div>
+    <span class = "icon-text">
+      <span> {text} </span>
+        <span class = "icon">
+        <FontAwesomeIcon icon="fa-solid fa-location-dot" />
+      </span>
+    </span>
   )
 }
 
