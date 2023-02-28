@@ -9,6 +9,13 @@ function GoogleMapsAPI(props) {
 
   const {userCurrentLocation, pinsList} = props;
 
+  //Constants for MapBox Isochrone API 
+  const urlBase = 'https://api.mapbox.com/isochrone/v1/mapbox/';
+  const lon = userCurrentLocation.center.lng; 
+  const lat = userCurrentLocation.center.lat;
+  const profile = 'driving'; 
+  const minutes = '60'; 
+
   console.log(pinsList)
   return (
       <div class = "googleMapsContainer">
