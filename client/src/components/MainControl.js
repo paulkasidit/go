@@ -19,10 +19,10 @@ function MainControl (){
   //Function to get list of cities in radius
   async function getCityData(){
 
-    const minLat = lat - 3//32.6369 
-    const maxLat = lat + 3//38.6369
-    const minLon = lng - 3//-120.6545 
-    const maxLon = lng + 3//-118.6545
+    const minLat = lat - 3
+    const maxLat = lat + 3
+    const minLon = lng - 3
+    const maxLon = lng + 3
 
     const response = await axios.get('https://api.api-ninjas.com/v1/city?'+
     + "min_lon="
@@ -44,8 +44,6 @@ function MainControl (){
     console.log(axios.get)
     console.log(response.data)
   }
-
-  getCityData()
 
   //Getting the user's current location 
   useEffect(() => {
