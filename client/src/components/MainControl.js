@@ -2,6 +2,7 @@ import React, { useState, useEffect} from "react";
 import "./App.css";
 import "./Main/Main.css"
 import AirbnbAPI from './Main/AirbnbAPI';
+import axios from 'axios';
 import GoogleMapsAPI from './Main/GoogleMapsAPI';
 
 function MainControl (){
@@ -15,11 +16,40 @@ function MainControl (){
     zoom: 12
   }
   
+  //Function to get list of cities in radius
+  async function getCityData(){
+
+    const minLat = lat - 3//32.6369 
+    const maxLat = lat + 3//38.6369
+    const minLon = lng - 3//-120.6545 
+    const maxLon = lng + 3//-118.6545
+
+    const response = await axios.get('https://api.api-ninjas.com/v1/city?'+
+    + "min_lon="
+    + minLon 
+    +"&max_lon="
+    + maxLon
+    +"&min_lat="
+    + minLat
+    +"&max_lat="
+    + maxLat
+    +"&limit="
+    + 5,
+      {headers: 
+        {
+          'X-Api-Key': process.env.REACT_APP_API_NINJAS_API_KEY
+        }
+      },
+    )
+    console.log(axios.get)
+    console.log(response.data)
+  }
+
+  getCityData()
+
   //Getting the user's current location 
   useEffect(() => {
       navigator.geolocation.getCurrentPosition(function(position){
-      console.log(position.coords.latitude)
-      console.log(position.coords.longitude)
       setLat(position.coords.latitude)
       setLng(position.coords.longitude)
     });

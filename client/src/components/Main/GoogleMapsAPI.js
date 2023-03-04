@@ -1,6 +1,5 @@
 import React from "react";
 import GoogleMapReact from 'google-map-react';
-import Circle from 'google-map-react';
 import PropTypes from "prop-types"; 
 import LocationMarker from "./LocationMarker";
 import "./Main.css";  
