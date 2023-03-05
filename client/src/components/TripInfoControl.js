@@ -28,6 +28,12 @@ function TripInfoControl (){
       setLng(position.coords.longitude)
     });
   })
+  //Only call these functions if user is logged in
+  if (isAuthenticated){
+    getUserInformation(user)
+    getCurrentAvailableCities();
+  }
+  console.log(currentAvailableCities)
    //Function to get list of cities in radius
   //Function only called if the current avaible cities is null 
   async function getCityData(){
@@ -62,8 +68,6 @@ function TripInfoControl (){
     setCurrentAvailableCities(newCurrentAvailableCitiesArray)
   }
 
-  getCurrentAvailableCities();
-  console.log(currentAvailableCities)
 
   //Function to check if the user already has a profile and to set the userProfile hook
   async function getUserInformation(user) {
@@ -87,25 +91,8 @@ function TripInfoControl (){
         setUserHasProfile(false);
       }
     });
+    return records;
   }
-
-  //Setting city interests based on user's location 
-  // function filterCities(availableCities, userProfile){
-  //   if (userProfile.interests === 'nightlife' ){
-  //     let nightlifeCites = 
-  //   }
-  //   else if (userHasProfile.interests === 'outdoors'){
-
-  //   } else (userHasProfile.interests === 'family') {
-
-  //   }
-  // }
-
-  //Only call this function if user is logged in
-  if (isAuthenticated){
-     getUserInformation(user)
-  }
-
 
   //Function to handle the creation of a new User Profile
   const handleNewUserProfileCreation = (newUserProfile) => { 
