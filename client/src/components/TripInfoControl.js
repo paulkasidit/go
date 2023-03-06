@@ -14,60 +14,23 @@ function TripInfoControl (){
   const {user, isAuthenticated} = useAuth0();
   const [userProfile, setUserProfile] = useState([]);
   const [userHasProfile, setUserHasProfile] = useState(false);
-  //Hooks for selecting city
+
+  //Hooks for selecting city to visit
   const [currentAvailableCities ,setCurrentAvailableCities] = useState([]);
+  const [filteredCities, setFilteredCities] = useState([])
   const [cityHasBeenSelected, setCityHasBeenSelected] = useState(false)
   const  [selectedCity, setSelectedCity] = useState(null)
+
   //Hooks to set the current location for user
   const [lat, setLat] = useState(null);
   const [lng, setLng] = useState(null);
-  //Getting the user's current location 
-  useEffect(() => {
-      navigator.geolocation.getCurrentPosition(function(position){
-      setLat(position.coords.latitude)
-      setLng(position.coords.longitude)
-    });
-  })
+
   //Only call these functions if user is logged in
-  if (isAuthenticated){
+  useEffect(() => {
     getUserInformation(user)
-    getCurrentAvailableCities();
-  }
+  },[])
+
   console.log(currentAvailableCities)
-   //Function to get list of cities in radius
-  //Function only called if the current avaible cities is null 
-  async function getCityData(){
-
-      const minLat = lat - 3
-      const maxLat = lat + 3
-      const minLon = lng - 3
-      const maxLon = lng + 3
-  
-      const response = await axios.get('https://api.api-ninjas.com/v1/city?'+
-      + "min_lon="
-      + minLon 
-      +"&max_lon="
-      + maxLon
-      +"&min_lat="
-      + minLat
-      +"&max_lat="
-      + maxLat
-      +"&limit="
-      + 5,
-        {headers: 
-          {
-            'X-Api-Key': process.env.REACT_APP_API_NINJAS_API_KEY
-          }
-        },
-      )
-      return response.data
-    }
-
-  async function getCurrentAvailableCities(){
-    let newCurrentAvailableCitiesArray = await getCityData();
-    setCurrentAvailableCities(newCurrentAvailableCitiesArray)
-  }
-
 
   //Function to check if the user already has a profile and to set the userProfile hook
   async function getUserInformation(user) {
@@ -94,12 +57,62 @@ function TripInfoControl (){
     return records;
   }
 
+  //Getting the user's current location 
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(function(position){
+      setLat(position.coords.latitude)
+      setLng(position.coords.longitude)
+    })
+  },[]);
+
+ //Getting nearby cities 
+  useEffect(() => {
+    getCityData();
+  },[])
+
+  async function getCityData(){
+    const headers = { 
+      'X-Api-Key': process.env.REACT_APP_API_NINJAS_API_KEY
+    }
+    const minLat = lat - 3
+    const maxLat = lat + 3
+    const minLon = lng - 3
+    const maxLon = lng + 3
+    const response = await axios.get('https://api.api-ninjas.com/v1/city?'
+    + "min_lon="
+    + minLon 
+    +"&max_lon="
+    + maxLon
+    +"&min_lat="
+    + minLat
+    +"&max_lat="
+    + maxLat
+    +"&limit="
+    + 5, {headers}
+    )
+    setCurrentAvailableCities(response.data)
+  }
+
   //Function to handle the creation of a new User Profile
   const handleNewUserProfileCreation = (newUserProfile) => { 
     const currentUserProfile = userProfile.concat(newUserProfile)
     setUserHasProfile(true);
     console.log(currentUserProfile)
   }
+
+  //Function to filter currently available city results based on profile
+  // const filterAvailableCityResultsBasedOnProfile = (currentAvailableCities, currentUserProfile) => {
+  //   let filteredCities = []
+  //   if (currentUserProfile.interests === "nightlife"){
+  //     return filteredCities.concat(currentAvailableCities.slice(0,1))
+  //   } else if (currentUserProfile.interests === "dining"){
+  //     return filteredCities.concat(currentAvailableCities.slice(2,3))
+  //   } else if (currentUserProfile.interests === "outdoors"){
+  //     return filteredCities.concat(currentAvailableCities.slice(0,-1))
+  //   } else {
+  //     return filteredCities.concat(currentAvailableCities.slice(0,2))
+  //   }
+  // }
 
   //Setting the currenly visible state of the page
   let currentlyVisibleState = null;
