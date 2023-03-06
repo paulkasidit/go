@@ -27,7 +27,9 @@ function TripInfoControl (){
 
   //Only call these functions if user is logged in
   useEffect(() => {
-    getUserInformation(user)
+    if (isAuthenticated){
+      getUserInformation(user)
+    }
   },[])
 
   console.log(currentAvailableCities)
@@ -88,7 +90,7 @@ function TripInfoControl (){
     +"&max_lat="
     + maxLat
     +"&limit="
-    + 5, {headers}
+    + 5, {headers},
     )
     setCurrentAvailableCities(response.data)
   }
