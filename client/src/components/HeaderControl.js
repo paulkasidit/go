@@ -11,7 +11,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 
 function HeaderControl(){
 
-  const {user, isAuthenticated, isLoading} = useAuth0();
+  const {user, isAuthenticated} = useAuth0();
 
   let sessionButton = null;
   let currentlyVisibleState = null; 

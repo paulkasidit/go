@@ -25,14 +25,23 @@ function TripInfoControl (){
   const [lat, setLat] = useState(null);
   const [lng, setLng] = useState(null);
 
-  //Only call these functions if user is logged in
-  useEffect(() => {
+  
+  useEffect(()=> {
     if (isAuthenticated){
       getUserInformation(user)
     }
   },[])
-
-  console.log(currentAvailableCities)
+  //Getting the user's current location 
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(function(position){
+      setLat(position.coords.latitude)
+      setLng(position.coords.longitude)
+    })
+  },[]);
+  //Getting nearby cities 
+  useEffect(() => {
+  getCityData();
+  },[])
 
   //Function to check if the user already has a profile and to set the userProfile hook
   async function getUserInformation(user) {
@@ -58,19 +67,6 @@ function TripInfoControl (){
     });
     return records;
   }
-
-  //Getting the user's current location 
-  useEffect(() => {
-    navigator.geolocation.getCurrentPosition(function(position){
-      setLat(position.coords.latitude)
-      setLng(position.coords.longitude)
-    })
-  },[]);
-
- //Getting nearby cities 
-  useEffect(() => {
-    getCityData();
-  },[])
 
   async function getCityData(){
     const headers = { 
@@ -99,22 +95,23 @@ function TripInfoControl (){
   const handleNewUserProfileCreation = (newUserProfile) => { 
     const currentUserProfile = userProfile.concat(newUserProfile)
     setUserHasProfile(true);
-    console.log(currentUserProfile)
   }
 
-  //Function to filter currently available city results based on profile
-  // const filterAvailableCityResultsBasedOnProfile = (currentAvailableCities, currentUserProfile) => {
-  //   let filteredCities = []
-  //   if (currentUserProfile.interests === "nightlife"){
-  //     return filteredCities.concat(currentAvailableCities.slice(0,1))
-  //   } else if (currentUserProfile.interests === "dining"){
-  //     return filteredCities.concat(currentAvailableCities.slice(2,3))
-  //   } else if (currentUserProfile.interests === "outdoors"){
-  //     return filteredCities.concat(currentAvailableCities.slice(0,-1))
-  //   } else {
-  //     return filteredCities.concat(currentAvailableCities.slice(0,2))
-  //   }
-  // }
+  //Function to handle filtering cities 
+  function filterCities(thisSessionCurrentAvailableCities, thisSessionUserProfile){
+    let result = []
+    if (thisSessionUserProfile.tripInterests === "nightlife"){
+       result.push(currentAvailableCities.slice(0,2))
+    } else if (thisSessionUserProfile.tripInterests === "outdoors"){
+       result.push(currentAvailableCities.slice(-1, -3))
+    } else  {
+       result.push(currentAvailableCities.slice(0,3))
+    } 
+    return result;
+  }
+
+  console.log(filterCities(currentAvailableCities, userProfile))
+
 
   //Setting the currenly visible state of the page
   let currentlyVisibleState = null;
