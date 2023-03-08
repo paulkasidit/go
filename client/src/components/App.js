@@ -1,6 +1,6 @@
 import React from "react";
 import HeaderControl from "./HeaderControl";
-import MainControl from "./MainControl";
+import MapControl from "./MapControl";
 import TripInfoControl from "./TripInfoControl";
 import 'bulma/css/bulma.min.css';
 import './App.css';
@@ -24,7 +24,7 @@ function App(){
         <section class = "section">
               <div class = "columns">
                 <div class = "column is-half">
-                    <MainControl/>
+                    <MapControl/>
                   </div>
                 <div class = "column is-one-quarter">
                   <TripInfoControl/>

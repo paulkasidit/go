@@ -18,30 +18,36 @@ function TripInfoControl (){
   //Hooks for selecting city to visit
   const [currentAvailableCities ,setCurrentAvailableCities] = useState([]);
   const [filteredCities, setFilteredCities] = useState([])
+  const [showNextCity, setShowNextCity] = useState([])
   const [cityHasBeenSelected, setCityHasBeenSelected] = useState(false)
   const  [selectedCity, setSelectedCity] = useState(null)
 
   //Hooks to set the current location for user
   const [lat, setLat] = useState(null);
   const [lng, setLng] = useState(null);
-
-  
+  console.log(currentAvailableCities)
+  //Getting user profile
   useEffect(()=> {
-    if (isAuthenticated){
-      getUserInformation(user)
-    }
-  },[])
+    getUserInformation(user)
+  },[isAuthenticated])
+
   //Getting the user's current location 
   useEffect(() => {
+    getCurrentLocation()
+  },[]);
+  //Getting nearby cities 
+  useEffect(() => {
+    getCityData();
+  },[lat,lng])
+  //Filtering cities 
+
+  //Function to get user's current location 
+  function getCurrentLocation(){
     navigator.geolocation.getCurrentPosition(function(position){
       setLat(position.coords.latitude)
       setLng(position.coords.longitude)
     })
-  },[]);
-  //Getting nearby cities 
-  useEffect(() => {
-  getCityData();
-  },[])
+  }
 
   //Function to check if the user already has a profile and to set the userProfile hook
   async function getUserInformation(user) {
@@ -65,9 +71,9 @@ function TripInfoControl (){
         setUserHasProfile(false);
       }
     });
-    return records;
   }
 
+  //Function to get city data within radius
   async function getCityData(){
     const headers = { 
       'X-Api-Key': process.env.REACT_APP_API_NINJAS_API_KEY
@@ -110,9 +116,16 @@ function TripInfoControl (){
     return result;
   }
 
-  console.log(filterCities(currentAvailableCities, userProfile))
+  //Function to loop through results 
+  // const loopThroughAvailableCities = (sampleArr) => {
+  //   for (let i = 0; i <= sampleArr.length; i++){
+  //     return sampleArr[i + 1];
+  //   }
+  // }
 
+  // let sampleArr = [{country: "US",is_capital:false,name: "Los Angeles",population: 12750807},{country: "US",is_capital: false,name: "San Francisco",population: 3592294}]
 
+  // console.log(loopThroughAvailableCities(sampleArr))
   //Setting the currenly visible state of the page
   let currentlyVisibleState = null;
   let currentlyVisibleForm = null;
@@ -125,7 +138,7 @@ function TripInfoControl (){
   } else if(isAuthenticated && userHasProfile) {
     currentlyVisibleForm = <DateInputForm/>
     currentlyVisibleState = <ReccomendationContainer
-    currentAvailableCities = {currentAvailableCities}/> 
+    /> 
   } else {
     currentlyVisibleForm = null
     currentlyVisibleState = null

@@ -2,10 +2,9 @@ import React, { useState, useEffect} from "react";
 import "./App.css";
 import "./Main/Main.css"
 import AirbnbAPI from './Main/AirbnbAPI';
-import axios from 'axios';
 import GoogleMapsAPI from './Main/GoogleMapsAPI';
 
-function MainControl (){
+function MapControl (){
   //Hooks to set the current location for user
   const [lat, setLat] = useState(null);
   const [lng, setLng] = useState(null);
@@ -51,4 +50,4 @@ function MainControl (){
     ) 
 };
 
-export default MainControl;
+export default MapControl;
