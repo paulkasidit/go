@@ -18,14 +18,12 @@ function TripInfoControl (){
   //Hooks for selecting city to visit
   const [currentAvailableCities ,setCurrentAvailableCities] = useState([]);
   const [filteredCities, setFilteredCities] = useState([])
-  const [showNextCity, setShowNextCity] = useState([])
   const [cityHasBeenSelected, setCityHasBeenSelected] = useState(false)
-  const  [selectedCity, setSelectedCity] = useState(null)
+  const  [selectedCity, setSelectedCity] = useState("Los Angeles")
 
   //Hooks to set the current location for user
   const [lat, setLat] = useState(null);
   const [lng, setLng] = useState(null);
-  console.log(currentAvailableCities)
   //Getting user profile
   useEffect(()=> {
     getUserInformation(user)
@@ -36,9 +34,9 @@ function TripInfoControl (){
     getCurrentLocation()
   },[]);
   //Getting nearby cities 
-  useEffect(() => {
-    getCityData();
-  },[lat,lng])
+  // useEffect(() => {
+  //   getCityData();
+  // },[lat,lng])
   //Filtering cities 
 
   //Function to get user's current location 
@@ -116,29 +114,47 @@ function TripInfoControl (){
     return result;
   }
 
-  //Function to loop through results 
-  // const loopThroughAvailableCities = (sampleArr) => {
-  //   for (let i = 0; i <= sampleArr.length; i++){
-  //     return sampleArr[i + 1];
-  //   }
-  // }
+  let sampleArr = [{country: "US",is_capital:false,name: "Los Angeles",population: 12750807},{country: "US",is_capital: false,name: "San Francisco",population: 3592294},{country: "US",is_capital: false,name: "San Bruno",population: 3592294}]
+  
+  const handleSelectClick = (e) => {
+    e.preventDefault()
+    setCityHasBeenSelected(true)
+  }
 
-  // let sampleArr = [{country: "US",is_capital:false,name: "Los Angeles",population: 12750807},{country: "US",is_capital: false,name: "San Francisco",population: 3592294}]
+  const handleNextClick = (e) => {
+    e.preventDefault();
+    for (let cityEntry of sampleArr){
+      for (const [k,v] of Object.entries(cityEntry)){
+        if (v === selectedCity){
+          const currentyCityIndex = sampleArr.indexOf(cityEntry)
+          const nextCity = sampleArr[currentyCityIndex + 1]
+          setSelectedCity(nextCity.name)
+        } 
+      }
+    }
+  }
 
-  // console.log(loopThroughAvailableCities(sampleArr))
+
   //Setting the currenly visible state of the page
-  let currentlyVisibleState = null;
-  let currentlyVisibleForm = null;
+  let currentlyVisibleState = null
+  let currentlyVisibleForm = null
 
   if(isAuthenticated && !userHasProfile){
     currentlyVisibleForm =  <StarterQuestionnaire
                               user = {user}
                               onNewUserProfileCreation = {handleNewUserProfileCreation}/>
     currentlyVisibleState = null
-  } else if(isAuthenticated && userHasProfile) {
-    currentlyVisibleForm = <DateInputForm/>
+  } else if(isAuthenticated && userHasProfile && !cityHasBeenSelected) {
+    currentlyVisibleForm = null
     currentlyVisibleState = <ReccomendationContainer
-    /> 
+    selectedCity = {selectedCity}
+    onClickingSelect = {handleSelectClick}
+    onClickingNext = {handleNextClick}/> 
+  } else if(isAuthenticated && userHasProfile && cityHasBeenSelected){
+    currentlyVisibleForm = <DateInputForm/>
+    currentlyVisibleState = <TripInfo 
+    selectedCity = {selectedCity}
+    />
   } else {
     currentlyVisibleForm = null
     currentlyVisibleState = null
