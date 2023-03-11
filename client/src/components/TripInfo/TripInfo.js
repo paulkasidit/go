@@ -1,8 +1,12 @@
 import React from "react";
 import "./TripInfo.css";  
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import PropTypes from "prop-types"; 
 
-function TripInfo() { 
+function TripInfo(props) { 
+
+  const {selectedCity} = props;
+
   return (
     <React.Fragment>
       <div class = "tripInfoContainer">
@@ -13,7 +17,7 @@ function TripInfo() {
               <p class="card-header-title">
               <h4 class="title is-4">
                 <span class = "icon-text">
-                  <span>Your Paso Robles Itinerary </span>
+                  <span>Your {selectedCity} Itinerary </span>
                   <span class = "icon">
                     <FontAwesomeIcon icon="fa-solid fa-arrow-right" />
                   </span>
@@ -51,6 +55,10 @@ function TripInfo() {
       </div>
     </React.Fragment>
   )
+}
+
+TripInfo.propTypes = {
+  selectedCity: PropTypes.string
 }
 
 export default TripInfo;

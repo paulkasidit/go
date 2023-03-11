@@ -2,6 +2,7 @@ import React, { useState, useEffect} from "react";
 import "./App.css";
 import "./TripInfo/TripInfo.css"; 
 import TripInfo from './TripInfo/TripInfo';
+import MapControl from "./MapControl";
 import DateInputForm from './TripInfo/DateInputForm';
 import StarterQuestionnaire from './TripInfo/StarterQuestionnaire';
 import ReccomendationContainer from "./TripInfo/ReccomendationContainer";
@@ -10,7 +11,9 @@ import axios from 'axios';
 
 function TripInfoControl (){
   //Sample data to be deleted later
-  let sampleArr = [{country: "US",is_capital:false,name: "Los Angeles",population: 12750807},{country: "US",is_capital: false,name: "San Francisco",population: 3592294},{country: "US",is_capital: false,name: "San Bruno",population: 3592294}]
+  let sampleArr = [{country: "US",is_capital:false,name: "Los Angeles",population: 12750807,latitude: 34.0522,longitude: -118.2437},
+                   {country: "US",is_capital: false,name: "San Francisco",population: 3592294,latitude: 37.7749,longitude: -122.4194},
+                   {country: "US",is_capital: false,name: "San Bruno",population: 3592294, latitude: 37.6305,longitude: -122.4111 }]
   let sampleCityDescriptionArray  = [{name: "Los Angeles", 
                                      description: "Los Angeles is a sprawling Southern California city and the center of the nation’s film and television industry. Near its iconic Hollywood sign, studios such as Paramount Pictures, Universal and Warner Brothers offer behind-the-scenes tours. On Hollywood Boulevard, TCL Chinese Theatre displays celebrities’ hand- and footprints, the Walk of Fame honors thousands of luminaries and vendors sell maps to stars’ homes." },
                                     {name: "San Bruno", 
@@ -34,6 +37,9 @@ function TripInfoControl (){
   //Hooks to set the current location for user
   const [lat, setLat] = useState(null);
   const [lng, setLng] = useState(null);
+  const [destinationLat, setDestinationLat] = useState(sampleArr[0].latitude);
+  const [destinationLng, setDestinationLng] = useState(sampleArr[0].longitude)
+  const [mapZoom, setMapZoom] = useState(10);
   
   //Getting user profile
   useEffect(()=> {
@@ -170,6 +176,9 @@ function TripInfoControl (){
           if(currentCityIndex === currentAvailableCities.length - 1)
             nextCityIndex = currentAvailableCities[0]
             setSelectedCity(nextCityIndex.name)
+            setDestinationLat(nextCityIndex.latitude)
+            setDestinationLng(nextCityIndex.longitude)
+            setMapZoom(11)
         } 
       }
     }
@@ -204,8 +213,20 @@ function TripInfoControl (){
   
   return(
     <React.Fragment>
-      {currentlyVisibleForm}
-      {currentlyVisibleState}
+      <div class = "columns">
+        <div class = "column is-half">
+            <MapControl
+            tripInfoLat = {lat}
+            tripInfoLng = {lng}
+            destinationLat = {destinationLat}
+            destinationLng = {destinationLng} 
+            mapZoom = {mapZoom}/>
+          </div>
+        <div class = "column is-one-quarter">
+          {currentlyVisibleForm}
+          {currentlyVisibleState}
+        </div>
+      </div>
     </React.Fragment>
   )
   

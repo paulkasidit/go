@@ -1,22 +1,20 @@
 import React from "react";
+import PropTypes from "prop-types";
 import "./Header.css"; 
 
-function AccountInfo() { 
+function AccountInfo(props) { 
+
+  const { user } = props
+  
   return (
     <React.Fragment>
-      <nav class = "breadcrumb is-right">
-        
-      </nav>
+      <p>{user.user_id}</p>
       <div class = "columns is-gapless">
-        <div class = "column">
-            <h5 class = "title is-5">Hello, Paul!</h5>
-        </div>
         <div class = "column">
           <button class = "button is-outlined">
             <a href = "#">
               <span class = "icon-text">
-                <span>Account</span>
-                
+                <span>Account</span>     
               </span>
             </a>
           </button>
@@ -26,14 +24,15 @@ function AccountInfo() {
             <a href = "#">Your Trips</a>
           </button>
         </div>
-        <div class = "column">
-          <button class = "button is-outlined">
-            <a href = "#">Logout</a>
-          </button>
-        </div>
     </div>
     </React.Fragment>
   )
+}
+
+AccountInfo.propTypes = { 
+  account: PropTypes.func,
+  onClickingAccountInfo: PropTypes.func,
+  onClickingYourTrips: PropTypes.func,
 }
 
 export default AccountInfo;
