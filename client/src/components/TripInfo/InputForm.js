@@ -2,7 +2,6 @@ import React from "react";
 import "./TripInfo.css"; 
 
 function InputForm() { 
-
   return (
     <React.Fragment>
       <div class = "box">

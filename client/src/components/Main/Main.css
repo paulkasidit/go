@@ -1,12 +1,3 @@
-.googleMapsContainer{
-  width:  100%;
-  height: 50vh;
-  padding: 20px;
-  border-radius: 1cm;
-  background: rgb(220, 224, 213);
-  position: static;
-}
-
-.LocationMarker{
+.mainContainer{ 
   
 }
