@@ -16,7 +16,7 @@ export default function ReccomendationContainer(props){
             </p>
             <div class = "card-content">
               <div class = "content">
-                <h5>Some facts about {selectedCity}!</h5>
+                <h5>Welcome to {selectedCity}!</h5>
                 <div class = "box">
                   <p>{cityDescription}</p>
                 </div>

@@ -13,11 +13,11 @@ function TripInfoControl (){
   //Sample data to be deleted later
   let sampleArr = [{country: "US",is_capital:false,name: "Los Angeles",population: 12750807,latitude: 34.0522,longitude: -118.2437},
                    {country: "US",is_capital: false,name: "San Francisco",population: 3592294,latitude: 37.7749,longitude: -122.4194},
-                   {country: "US",is_capital: false,name: "San Bruno",population: 3592294, latitude: 37.6305,longitude: -122.4111 }]
+                   {country: "US",is_capital: false,name: "Monterey",population: 3592294, latitude: 36.6002,longitude: -121.8947 }]
   let sampleCityDescriptionArray  = [{name: "Los Angeles", 
                                      description: "Los Angeles is a sprawling Southern California city and the center of the nation’s film and television industry. Near its iconic Hollywood sign, studios such as Paramount Pictures, Universal and Warner Brothers offer behind-the-scenes tours. On Hollywood Boulevard, TCL Chinese Theatre displays celebrities’ hand- and footprints, the Walk of Fame honors thousands of luminaries and vendors sell maps to stars’ homes." },
-                                    {name: "San Bruno", 
-                                     description: "San Bruno is a city in San Mateo County, California, United States, incorporated in 1914. The population was 43,908 at the 2020 United States Census"},
+                                    {name: "Monterey", 
+                                     description: "Monterey is a city on California’s rugged central coast. Its Cannery Row, one-time center of the sardine-packing industry, was immortalized by novelist John Steinbeck. Today, it's a popular strip of gift shops, seafood restaurants and bars in converted factories. Also famous is Monterey Bay Aquarium, with thousands of marine animals and plants on display in underwater and interactive exhibits."},
                                     {name: "San Francisco", 
                                      description: "San Francisco, officially the City and County of San Francisco, is a commercial, financial, and cultural center of Northern California."}
                                     ]
