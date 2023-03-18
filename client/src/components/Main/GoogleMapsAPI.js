@@ -6,7 +6,7 @@ import "./Main.css";
 
 function GoogleMapsAPI(props) { 
 
-  const {userCurrentLocation, pinsList} = props;
+  const {userCurrentLocation} = props;
 
   return (
       <div class = "googleMapsContainer">
@@ -18,19 +18,6 @@ function GoogleMapsAPI(props) {
                   center = {userCurrentLocation.center}
                   zoom = {userCurrentLocation.zoom}
         />
-        {/* {pinsList.map(pins => {
-                return(
-                  <LocationMarker
-                  id = {pins.id}
-                  lat = {pins.lat}
-                  lng = {pins.lng}
-                  text = {pins.text}
-                  />
-                )
-              }
-          )
-        }
-        </GoogleMapReact> */}
       </div>
   )
 }

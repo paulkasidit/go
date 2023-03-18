@@ -28,17 +28,17 @@ function TripInfoControl (){
   const [userHasProfile, setUserHasProfile] = useState(false);
 
   //Hooks for selecting city to visit
-  const [currentAvailableCities ,setCurrentAvailableCities] = useState(sampleArr);
+  const [currentAvailableCities ,setCurrentAvailableCities] = useState(null);
   const [filteredCities, setFilteredCities] = useState([])
   const [cityHasBeenSelected, setCityHasBeenSelected] = useState(false)
   const [cityDescription, setCityDescription] = useState(null)
-  const  [selectedCity, setSelectedCity] = useState("Los Angeles")
+  const [selectedCity, setSelectedCity] = useState(null)
 
   //Hooks to set the current location for user
   const [lat, setLat] = useState(null);
   const [lng, setLng] = useState(null);
-  const [destinationLat, setDestinationLat] = useState(sampleArr[0].latitude);
-  const [destinationLng, setDestinationLng] = useState(sampleArr[0].longitude)
+  const [destinationLat, setDestinationLat] = useState(null);
+  const [destinationLng, setDestinationLng] = useState(null)
   const [mapZoom, setMapZoom] = useState(10);
   
   //Getting user profile
@@ -53,13 +53,13 @@ function TripInfoControl (){
   useEffect(() => {
     getCurrentLocation()
   },[]);
-  useEffect(() => {
-    getCityDescription()
-  },[selectedCity])
-  //Getting nearby cities 
   // useEffect(() => {
-  //   getCityData();
-  // },[lat,lng])
+  //   getCityDescription()
+  // },[selectedCity])
+  //Getting nearby cities 
+  useEffect(() => {
+    getCityData();
+  },[])
   //Filtering cities 
   // useEffect(()=>{
   //   getPlaceData();
@@ -97,12 +97,6 @@ function TripInfoControl (){
     });
   }
 
-  async function getPlaceData(){
-    
-    
-
-  }
-
 
   //Function to get city data within radius
   async function getCityData(){
@@ -126,6 +120,9 @@ function TripInfoControl (){
     + 5, {headers},
     )
     setCurrentAvailableCities(response.data)
+    setDestinationLat(currentAvailableCities[0].latitude)
+    setDestinationLng(currentAvailableCities[0].longitude)
+    setSelectedCity(currentAvailableCities[0].name)
   }
 
   //Function to handle the creation of a new User Profile

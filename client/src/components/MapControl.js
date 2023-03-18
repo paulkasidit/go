@@ -13,24 +13,8 @@ function MapControl (props){
     zoom: mapZoom
   }
   
-  const markers = [ 
-    {
-      id:1, 
-      lat: tripInfoLat,
-      lng: tripInfoLng,
-      text: "HOME"
-    },
-    {
-      id:2, 
-      lat: destinationLat, 
-      lng: destinationLng, 
-      text: "DESTINATION"
-    }
-  ]
-
   let currentlyVisibleState =  <GoogleMapsAPI 
                                 userCurrentLocation = {userCurrentLocation}
-                                pinsList = {markers}
                                 />
 
     return(
